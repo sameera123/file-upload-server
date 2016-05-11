@@ -5,6 +5,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.context.ApplicationContext;
@@ -42,11 +45,24 @@ public class FileUploadController {
 		
 		if(!file.isEmpty()){
 			try {
-				BufferedOutputStream stream= new BufferedOutputStream(new FileOutputStream(new File(""+"files/"+name)));
+				BufferedOutputStream stream= new BufferedOutputStream(new FileOutputStream(new File(""+"files/"+file.getOriginalFilename())));
 				
 				FileCopyUtils.copy(file.getInputStream(), stream);
+				System.out.println(file.getOriginalFilename());
+				System.out.println(file.getName());
+				System.out.println(file.getContentType());
+				//System.out.println(file.getOriginalFilename());
 				stream.close();
-				return new FileDetails(counter.incrementAndGet(), name, "11-11-11", 21324);
+				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+				Date date = new Date();
+				
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return new FileDetails(counter.incrementAndGet(), name,dateFormat.format(date).toString(), file.getSize());
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

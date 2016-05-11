@@ -4,13 +4,13 @@ public class FileDetails {
 	
 	private long id;
 	private String fileName;
-	private String createdDate;
+	private String createdDateTime;
 	private long size;
 	
-	public FileDetails(long id,String fileName,String createdDate,long size){
+	public FileDetails(long id,String fileName,String createdDateTime,long size){
 		this.id = id;
 		this.fileName = fileName;
-		this.createdDate = createdDate;
+		this.createdDateTime = createdDateTime;
 		this.size = size;
 	}
 	
@@ -23,7 +23,7 @@ public class FileDetails {
 	}
 	
 	public String getCreatedDate(){
-		return createdDate;
+		return createdDateTime;
 	}
 	
 	public long getSize(){

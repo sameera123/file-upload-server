@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
-Implementation-Vendor: Pivotal Software, Inc.
 Implementation-Title: file-upload-service
 Implementation-Version: 0.0.1
+Built-By: sameeraw
 Implementation-Vendor-Id: com.codesetlabs
-Build-Jdk: 1.7.0_07
-Built-By: SameeraWickramasekar
+Build-Jdk: 1.8.0_20
 Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
 
