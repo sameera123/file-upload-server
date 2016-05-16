@@ -10,12 +10,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -29,8 +31,10 @@ public class FileUploadController {
 	private static final String template = "Hello, %s!";
 	private AtomicLong counter = new AtomicLong();
 	
+	 @Autowired
+	 private UserDao userDao;
 	
-	//Hello world end point
+	 
 	@RequestMapping("/greeting")
 	public Greeting sayHello(@RequestParam(value="name",defaultValue = "world")String name){
 			
@@ -80,6 +84,21 @@ public class FileUploadController {
 		
 		
 	}
+	
+	
+	  @RequestMapping("/get-by-email")
+	  @ResponseBody
+	  public String getByEmail(String email) {
+	    String userId = "";
+	    try {
+	      User user = userDao.findByEmail(email);
+	      userId = String.valueOf(user.getId());
+	    }
+	    catch (Exception ex) {
+	      return "User not found";
+	    }
+	    return "The user id is: " + userId;
+	  }
 	
 	
 	
