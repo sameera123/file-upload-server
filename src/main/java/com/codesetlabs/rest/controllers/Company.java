@@ -9,12 +9,13 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="Company")
+@Table(name="Company_new")
 public class Company {
 	
 	@Id
+	@NotNull
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idCompany;
+	private int id;
 	
 	@NotNull
 	@Column(name="name")
@@ -24,6 +25,9 @@ public class Company {
 	public Company(String name){
 		this.name = name;
 	}
+	public Company(){
+		
+	}
 	
 	public void setName(String name){
 		this.name = name;
@@ -31,5 +35,9 @@ public class Company {
 	
 	public String getName(){
 		return name;
+	}
+	
+	public int getId(){
+		return id;
 	}
 }

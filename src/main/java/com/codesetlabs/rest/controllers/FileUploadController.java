@@ -12,15 +12,21 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.codesetlabs.model.FileDetails;
 import com.codesetlabs.model.Greeting;
@@ -84,23 +90,7 @@ public class FileUploadController {
 		
 		
 	}
-	
-	
-	  @RequestMapping("/get-by-email")
-	  @ResponseBody
-	  public String getByEmail(String email) {
-	    String userId = "";
-	    try {
-	      User user = userDao.findByEmail(email);
-	      userId = String.valueOf(user.getId());
-	    }
-	    catch (Exception ex) {
-	      return "User not found";
-	    }
-	    return "The user id is: " + userId;
-	  }
-	
-	
+
 	
 	
 	

@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 @Transactional
 public interface UserDao extends CrudRepository<User, Integer>{
-	 public User findByEmail(String email);
+	
 
 }
