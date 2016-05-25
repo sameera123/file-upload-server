@@ -70,5 +70,26 @@ public class CompanyController {
 
 		return new ResponseEntity<>(deleted, HttpStatus.OK);
 	}
+	
+	
+	
+	// Get
+		@RequestMapping(value = "/company/{id}", method = RequestMethod.GET)
+
+		public @ResponseBody Company getCompany(@PathVariable int id) {
+
+			Company c = null;
+			try {
+				c = companyDao.findOne(id);
+				System.out.println(c.getUsers().toArray().length);
+				
+
+			} catch (Exception e) {
+
+				return null;
+			}
+
+			return c;
+		}
 
 }
